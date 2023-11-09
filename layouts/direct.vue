@@ -1,0 +1,3 @@
+<template>
+  direct layout
+</template>

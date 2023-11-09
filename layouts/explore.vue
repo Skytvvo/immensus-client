@@ -1,0 +1,3 @@
+<template>
+  explore layout
+</template>
