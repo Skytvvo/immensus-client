@@ -1,11 +1,12 @@
 <script setup lang="ts">
 
+import LogoLink from "~/components/LogoLink.vue";
 </script>
 
 <template>
   <div class="app-bar">
     <div class="app-bar__left-side">
-      test
+      <LogoLink/>
     </div>
     <div class="app-bar__right-side">
       test

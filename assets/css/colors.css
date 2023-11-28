@@ -1,0 +1,9 @@
+:root{
+    /* text */
+    --text--primary: #000;
+    --text--secondary: #424242;
+
+    /* background */
+    --background--primary: #C4C4C4;
+    --background--primary--light: rgba(196, 196, 196, 0.12);
+}
