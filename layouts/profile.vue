@@ -1,3 +1,3 @@
 <template>
-  profile layout
+  <NavAppBar/>
 </template>
