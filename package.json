@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",
+    "nuxt-icons": "^3.2.1",
     "polished": "^4.2.2"
   }
 }

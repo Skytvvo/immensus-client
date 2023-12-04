@@ -16,7 +16,12 @@
     color: var(--text--primary);
     background: var(--background--primary--light);
     font-size: 24px;
-    padding: 10px 10px 10px 40px;
+    width: 240px;
+    height: 70px;
+    padding-right: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
     border-radius: 0 10px 10px 0;
   }
 </style>

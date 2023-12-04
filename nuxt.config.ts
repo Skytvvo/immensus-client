@@ -3,6 +3,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
+
   devtools: { enabled: true },
   build: {
     transpile: ['vuetify'],
@@ -14,7 +15,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    //...
+    "nuxt-icons"
   ],
   vite: {
     vue: {

@@ -7,6 +7,7 @@ import LogoLink from "~/components/LogoLink.vue";
   <div class="app-bar">
     <div class="app-bar__left-side">
       <LogoLink/>
+      <Search/>
     </div>
     <div class="app-bar__right-side">
       test
@@ -18,10 +19,12 @@ import LogoLink from "~/components/LogoLink.vue";
   .app-bar{
     display: flex;
     justify-content: space-between;
+    height: 70px;
   }
 
   .app-bar__left-side{
     display: flex;
+    align-items: center;
     gap: 10px
   }
 
