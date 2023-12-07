@@ -1,26 +1,68 @@
 <template>
-  <v-btn>
-    Button
-  </v-btn>
+  <button class="button" :class="variantClass">
+    <span v-if="$slots.leftIcon" class="button-icon button-icon--left">
+      <slot name="leftIcon" />
+    </span>
+
+    <span class="button--content">
+      <slot name="default" />
+    </span>
+
+    <span v-if="$slots.rightIcon" class="button-icon button-icon--right">
+      <slot name="rightIcon" />
+    </span>
+  </button>
 </template>
 
+<script>
+export default {
+  props: {
+    //todo: enum
+    variant: {
+      type: String,
+      default: "filled"
+    }
+  },
+  computed:{
+    variantClass(){
+      //todo: extract
+      const classByVariant = {
+        filled: "button--filled",
+        clean: "button--clean",
+        outlined: "button-outline",
+      };
+
+      return classByVariant[this.variant];
+    }
+  }
+};
+</script>
+
 <style scoped>
+  .button {
+    padding: 8px;
+    border-radius: 10px;
+    outline: none;
+    display: inline-flex;
+  }
 
-.v-btn{
-  border-radius: 5px;
-  box-shadow: none !important;
-}
+  .button--filled {
+    background: var(--background--primary--light);
+    color: var(--text--primary);
+  }
 
-.v-btn--variant-elevated{
-  background: rgba(var(--v-theme-background-action), 0.2);
-}
+  .button--clean {
+    background: transparent;
+  }
 
-.v-btn--variant-accept{
-  background: rgb(var(--v-theme-action-primary));
-  border: 1px solid rgb(var(--v-theme-border-primary));
-}
+  .button--outlined{
+    background: transparent;
+    outline: 1px solid var(--border--primary);
+  }
 
-.v-btn--variant-outlined{
-  border: 1px solid rgb(var(--v-theme-border-primary));
-}
+  .button-icon{
+    display: inline-flex;
+    height: 24px;
+    width: 24px;
+  }
 </style>

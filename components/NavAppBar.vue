@@ -10,7 +10,14 @@ import LogoLink from "~/components/LogoLink.vue";
       <Search/>
     </div>
     <div class="app-bar__right-side">
-      test
+      <Button class="app-bar__right-side__create-post-button">
+        <template #leftIcon>
+          <nuxt-icon name="plus_stroke" />
+        </template>
+        <template #default>
+          New Post
+        </template>
+      </Button>
     </div>
   </div>
 </template>
@@ -30,5 +37,9 @@ import LogoLink from "~/components/LogoLink.vue";
 
   .app-bar__right-side{
     display: flex;
+  }
+
+  .app-bar__right-side__create-post-button {
+    align-self: center;
   }
 </style>
