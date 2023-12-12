@@ -1,3 +1,3 @@
 <template>
-  <NavAppBar/>
+  <DesktopNavAppBar/>
 </template>
