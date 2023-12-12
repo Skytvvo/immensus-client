@@ -1,3 +1,3 @@
 <template>
-  explore layout
+  <NavAppBar/>
 </template>

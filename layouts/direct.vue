@@ -1,3 +1,3 @@
 <template>
-  direct layout
+  <NavAppBar/>
 </template>
