@@ -15,4 +15,6 @@
     /* borders */
     --border--primary: #C4C4C4;
 
+    /* gradient */
+    --gradient--primary: linear-gradient(45deg, rgba(255, 1, 169, 100%), rgba(13, 0, 255, 49%));
 }

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import LogoLink from "~/components/LogoLink.vue";
 </script>
 
 <template>
@@ -18,6 +17,20 @@ import LogoLink from "~/components/LogoLink.vue";
           New Post
         </template>
       </Button>
+      <div class="app-bar__right-side__menu">
+        <DesktopNavMenuItem to="/">
+          <nuxt-icon name="home" />
+        </DesktopNavMenuItem>
+        <DesktopNavMenuItem to="/explore">
+          <nuxt-icon name="compass" />
+        </DesktopNavMenuItem>
+        <DesktopNavMenuItem to="/direct">
+          <nuxt-icon name="arrow" />
+        </DesktopNavMenuItem>
+        <DesktopNavMenuItem to="/profile">
+          <nuxt-icon name="person" />
+        </DesktopNavMenuItem>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +40,7 @@ import LogoLink from "~/components/LogoLink.vue";
     display: flex;
     justify-content: space-between;
     height: 70px;
+    box-shadow: 0 0 10px 0 var(--border--primary);
   }
 
   .app-bar__left-side{
@@ -36,10 +50,15 @@ import LogoLink from "~/components/LogoLink.vue";
   }
 
   .app-bar__right-side{
-    display: flex;
+    display: inline-flex;
+    gap: 8px
   }
 
   .app-bar__right-side__create-post-button {
     align-self: center;
+  }
+
+  .app-bar__right-side__menu {
+    display: inline-flex;
   }
 </style>
