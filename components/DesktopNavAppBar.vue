@@ -5,7 +5,7 @@
 <template>
   <div class="app-bar">
     <div class="app-bar__left-side">
-      <DesktopNavMenuItem/>
+      <DesktopLogoLink/>
       <DesktopSearch/>
     </div>
     <div class="app-bar__right-side">
