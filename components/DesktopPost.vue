@@ -1,5 +1,6 @@
 <script lang="ts">
   import {PropType} from "vue";
+  import MediaCarousel from "~/components/MediaCarousel.vue";
 
   interface AuthorProps{
     avatar?: {
@@ -22,6 +23,7 @@
   }
 
   export  default {
+    components: {MediaCarousel},
     props: {
       author: {
         type: Object as PropType<AuthorProps>,
@@ -63,7 +65,7 @@
     </div>
 
     <div class="post--desktop__media">
-
+      <MediaCarousel/>
     </div>
 
     <div class="post--desktop__statistic">
