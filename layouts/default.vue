@@ -28,6 +28,7 @@
     <DesktopNavAppBar/>
     <div class="default-content--desktop">
       <!-- todo: move goods here -->
+
     </div>
   </div>
 </template>
