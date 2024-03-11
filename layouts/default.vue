@@ -27,7 +27,7 @@
   <div class="default--desktop">
     <DesktopNavAppBar/>
     <div class="default-content--desktop">
-      <DesktopPost :author="mockedAuthor" :post="mockedPost"/>
+      <!-- todo: move goods here -->
     </div>
   </div>
 </template>
@@ -38,6 +38,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 100vh;
   }
   .default-content--desktop{
     display: flex;
