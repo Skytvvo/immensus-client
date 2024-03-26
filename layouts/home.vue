@@ -29,6 +29,9 @@
     <div class="default-content--desktop">
       <!-- todo: move goods here -->
 
+      <!--  todo: remove mock    -->
+      <h1>Home Page</h1>
+
     </div>
   </div>
 </template>
