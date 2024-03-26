@@ -5,8 +5,8 @@
 <template>
   <div class="app-bar">
     <div class="app-bar__left-side">
-      <LogoLink/>
-      <Search/>
+      <DesktopLogoLink/>
+      <DesktopSearch/>
     </div>
     <div class="app-bar__right-side">
       <Button class="app-bar__right-side__create-post-button">
