@@ -9,26 +9,9 @@
       <DesktopSearch/>
     </div>
     <div class="app-bar__right-side">
-      <Button class="app-bar__right-side__create-post-button">
-        <template #leftIcon>
-          <nuxt-icon name="plus_stroke" />
-        </template>
-        <template #default>
-          New Post
-        </template>
-      </Button>
       <div class="app-bar__right-side__menu">
-        <DesktopNavMenuItem to="/">
-          <nuxt-icon name="home" />
-        </DesktopNavMenuItem>
-        <DesktopNavMenuItem to="/explore">
-          <nuxt-icon name="compass" />
-        </DesktopNavMenuItem>
-        <DesktopNavMenuItem to="/direct">
-          <nuxt-icon name="arrow" />
-        </DesktopNavMenuItem>
-        <DesktopNavMenuItem to="/profile">
-          <nuxt-icon name="person" />
+        <DesktopNavMenuItem to="/cart">
+          <nuxt-icon name="cart" />
         </DesktopNavMenuItem>
       </div>
     </div>
