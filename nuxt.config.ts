@@ -3,7 +3,12 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
-
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   devtools: { enabled: true },
   build: {
     transpile: ['vuetify'],
