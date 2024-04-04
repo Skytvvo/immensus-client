@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",
+    "@pinia/nuxt": "^0.5.1",
     "nuxt-icons": "^3.2.1",
+    "pinia": "^2.1.7",
     "polished": "^4.2.2"
   }
 }
