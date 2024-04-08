@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  typescript: {
+    typeCheck: true
+  },
   devtools: { enabled: true },
   build: {
     transpile: ['vuetify'],
