@@ -3,6 +3,9 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    servicesDomainUrl: ''
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
