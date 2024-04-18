@@ -35,5 +35,8 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+    define: {
+      __VUE_PROD_DEVTOOLS__: true
+    },
   },
 })
