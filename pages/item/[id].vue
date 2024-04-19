@@ -1,16 +1,20 @@
 <script setup lang="ts">
 
-import {ProductItemTypes} from "~/types/ProductItem.types";
+import {ProductItem} from "~/types/ProductItem.types";
 import {useProfileStore} from "~/store/profile.store";
 
 const { id } = useRoute().params
-const { pending, data } = useLazyFetch<ProductItemTypes>('/api/item/get', { query: { id }})
+const { pending, data } = useLazyFetch<ProductItem>('/api/item', { query: { id }})
 
 const profileStore = useProfileStore();
 const profile = storeToRefs(profileStore)
 const onAddToCart = async () => {
   alert(profile.user.value)
 }
+
+onMounted(()=>{
+
+})
 
 </script>
 

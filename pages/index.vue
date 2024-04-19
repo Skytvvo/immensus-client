@@ -1,5 +1,7 @@
 <template>
-  <NuxtLayout name="home" />
+  <NuxtLayout name="home">
+    <DesktopFeed/>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">

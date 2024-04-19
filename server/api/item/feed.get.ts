@@ -1,9 +1,11 @@
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
-    const {id} = getQuery(event)
+    const query = getQuery(event)
+
     try {
-        const response = await $fetch(`${config.servicesDomainUrl}/products/${id}`);
-        return response;
+        return await $fetch(`${config.servicesDomainUrl}/products/feed`, {
+            query
+        });
     } catch (e) {
         console.error(e)
         throw e;
