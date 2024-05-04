@@ -4,7 +4,8 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
-    servicesDomainUrl: ''
+    servicesDomainUrl: '',
+    CLOUD_API: process.env.CLOUD_API
   },
   postcss: {
     plugins: {

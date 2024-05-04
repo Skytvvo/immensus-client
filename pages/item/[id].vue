@@ -8,13 +8,10 @@ const { pending, data } = useLazyFetch<ProductItem>('/api/item', { query: { id }
 
 const profileStore = useProfileStore();
 const profile = storeToRefs(profileStore)
+
 const onAddToCart = async () => {
   alert(profile.user.value)
 }
-
-onMounted(()=>{
-
-})
 
 </script>
 

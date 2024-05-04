@@ -1,10 +1,10 @@
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
-    const body = await readBody(event)
+    const formData = await readFormData(event)
 
     try {
-        return await $fetch(`${config.servicesDomainUrl}/products/create`, {
-            method: "POST", body, headers: {
+        return await $fetch(`${config.servicesDomainUrl}/cloud/upload/image`, {
+            method: "POST", body: formData, headers: {
                 Authorization: event.headers.get("Authorization") ?? ""
             }
         });
