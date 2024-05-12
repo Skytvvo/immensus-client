@@ -1,5 +1,6 @@
 <script setup lang="ts">
-
+  import {useCartStore} from "~/store/cart.store";
+  const cartStore = useCartStore();
 </script>
 
 <template>
@@ -12,6 +13,7 @@
       <div class="app-bar__right-side__menu">
         <DesktopNavMenuItem to="/cart">
           <nuxt-icon name="cart" />
+          {{cartStore.total}}
         </DesktopNavMenuItem>
       </div>
     </div>

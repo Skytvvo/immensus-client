@@ -2,15 +2,32 @@
 
 import {ProductItem} from "~/types/ProductItem.types";
 import {useProfileStore} from "~/store/profile.store";
+import {useCartStore} from "~/store/cart.store";
 
 const { id } = useRoute().params
 const { pending, data } = useLazyFetch<ProductItem>('/api/item', { query: { id }})
 
-const profileStore = useProfileStore();
-const profile = storeToRefs(profileStore)
+const cartStore = useCartStore();
 
 const onAddToCart = async () => {
-  alert(profile.user.value)
+  try {
+    const access_token = localStorage.getItem("access_token");
+
+    await $fetch("/api/cart/add", {
+      method: "POST",
+      body: {
+        productId: id,
+        quantity: 1
+      },
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      }
+    })
+    await cartStore.loadCart();
+  }
+  catch (e) {
+    console.error(e)
+  }
 }
 
 </script>
