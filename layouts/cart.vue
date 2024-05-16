@@ -1,6 +1,9 @@
-<template>
-  <!--  todo: remove mock    -->
-  <h1>Cart Page</h1>
-</template>
 <script setup lang="ts">
 </script>
+
+<template>
+  <div class="flex flex-col w-full h-screen">
+    <DesktopNavAppBar/>
+    <slot/>
+  </div>
+</template>

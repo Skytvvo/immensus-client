@@ -1,10 +1,11 @@
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
-    const body = await readBody(event)
-    try {
+    const {id} = getQuery(event);
 
-        return await $fetch(`${config.servicesDomainUrl}/cart/add`, {
-            method: "POST", body, headers: {
+    try {
+        return await $fetch(`${config.servicesDomainUrl}/cart/empty/${id}`, {
+            method: "DELETE",
+            headers: {
                 Authorization: event.headers.get("Authorization") ?? ""
             }
         });
