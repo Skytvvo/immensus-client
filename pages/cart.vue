@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {useCartStore} from "~/store/cart.store";
+import {useOrderStore} from "~/store/order.store";
 
 const cartStore = useCartStore();
+const orderStore = useOrderStore();
 const {cart} = storeToRefs(cartStore);
 
 </script>
@@ -20,13 +22,21 @@ const {cart} = storeToRefs(cartStore);
         </div>
         <div class="flex-1">{{ cartItem.product.description }}</div>
         <div class="flex flex-col">
-          <button>Заказать</button>
+          <button
+              @click="() => orderStore.makeOrder([cartItem.id],'test')">
+            Заказать
+          </button>
           <div class="flex gap-5 justify-between">
-            <button class="p-2 border border-1 border-gray-500" @click="() => cartStore.addByCartId(cartItem.id)">+</button>
-            <span class="flex items-center">{{cartItem.quantity}}</span>
-            <button class="p-2 border border-1 border-gray-500" :disabled="!(cartItem.quantity > 1)" @click="() => cartStore.removeByCartId(cartItem.id)">-</button>
+            <button class="p-2 border border-1 border-gray-500" @click="() => cartStore.addByCartId(cartItem.id)">+
+            </button>
+            <span class="flex items-center">{{ cartItem.quantity }}</span>
+            <button class="p-2 border border-1 border-gray-500" :disabled="!(cartItem.quantity > 1)"
+                    @click="() => cartStore.removeByCartId(cartItem.id)">-
+            </button>
           </div>
-          <button class="p-2 border-2 border-rose-500 hover:bg-red-500 hover:text-white" @click="()=>cartStore.empty(cartItem.id)">Очистить корзину</button>
+          <button class="p-2 border-2 border-rose-500 hover:bg-red-500 hover:text-white"
+                  @click="()=>cartStore.empty(cartItem.id)">Очистить корзину
+          </button>
         </div>
       </div>
     </div>
