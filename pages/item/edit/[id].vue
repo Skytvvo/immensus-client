@@ -10,6 +10,7 @@ const name = ref<string | null>(data.value?.name ?? null)
 const description = ref<string | null>(data.value?.description ?? null)
 const price = ref<number | null>(data.value?.price ?? null)
 const picture = ref<string | null>(data.value?.picture ?? null)
+const state = ref<string | null>(data.value?.state ?? null)
 
 const onFileLoaded = async (e: Event) => {
   const loadedFile: File = (<HTMLInputElement>e.target).files?.[0] as File;
@@ -43,7 +44,8 @@ const onSubmit = async () => {
     name: name.value,
     description: description.value,
     price: price.value,
-    picture: picture.value
+    picture: picture.value,
+    state: state.value
   }
 
   try {
@@ -90,9 +92,16 @@ const onDelete = async () => {
       <input v-model="description" class="w-full border border-gray-300" type="text" required name="description"
              placeholder="description">
 
+      <div class="flex gap-1">
+        <label for="select">Статус:</label>
+        <select v-model="state" id="select">
+          <option value="ACTIVE">Активен</option>
+          <option value="DELETED">Заархивирован</option>
+        </select>
+      </div>
       <input type="submit" class="w-full border border-gray-300" value="Update">
     </form>
-    <button @click="onDelete">Удалить товар</button>
+    <button v-if="state !== 'DELETED'" @click="onDelete">Удалить товар</button>
   </NuxtLayout>
 </template>
 

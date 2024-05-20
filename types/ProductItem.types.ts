@@ -4,4 +4,5 @@ export interface ProductItem{
     description: string;
     price: number;
     picture: string;
+    state: "ACTIVE" | "DELETED"
 }
