@@ -14,7 +14,7 @@ const cartStore = useCartStore();
   <NuxtLayout name="item">
     <span v-if="pending">Loading...</span>
     <div v-else class="flex flex-col">
-      <div class="flex">
+      <div class="flex relative">
         <div class="flex w-80 h-80"><img :src="data?.picture" :alt="data?.name"></div>
         <div class="flex flex-col">
           <div class="flex flex-col">
@@ -24,6 +24,7 @@ const cartStore = useCartStore();
           </div>
           <button class="border-2 border-gray-500 border-solid rounded-md p-2" @click="() => cartStore.addByProductId(id as string)">Add to the cart</button>
         </div>
+        <button class="absolute right-0 top-0" @click="() => navigateTo(`/item/edit/${id}`)">Edit</button>
       </div>
     </div>
   </NuxtLayout>
