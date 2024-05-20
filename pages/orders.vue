@@ -19,7 +19,7 @@ const {orders} = storeToRefs(ordersStore);
             <div>Название: {{ product.name }}</div>
             <div>Цена: {{ product.price }}</div>
           </div>
-          <div class="flex-2">Описание{{ product.description }}</div>
+          <div class="flex">Описание: {{ product.description }}</div>
         </div>
       </div>
     </div>

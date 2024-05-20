@@ -3,8 +3,8 @@
 
 import {ProductItem} from "~/types/ProductItem.types";
 
-const { id } = useRoute().params
-const { pending, data } = useLazyFetch<ProductItem>('/api/item', { query: { id }})
+const {id} = useRoute().params
+const {pending, data} = useLazyFetch<ProductItem>('/api/item', {query: {id}})
 
 const name = ref<string | null>(data.value?.name ?? null)
 const description = ref<string | null>(data.value?.description ?? null)
@@ -60,6 +60,21 @@ const onSubmit = async () => {
   }
 }
 
+const onDelete = async () => {
+  try {
+    const access_token = localStorage.getItem("access_token");
+
+    await $fetch("/api/item/delete", {
+      method: "DELETE", query: {id}, headers: {
+        Authorization: `Bearer ${access_token}`,
+      }
+    })
+    navigateTo("/")
+  } catch (e) {
+    alert(e)
+  }
+}
+
 </script>
 
 <template>
@@ -77,6 +92,7 @@ const onSubmit = async () => {
 
       <input type="submit" class="w-full border border-gray-300" value="Update">
     </form>
+    <button @click="onDelete">Удалить товар</button>
   </NuxtLayout>
 </template>
 

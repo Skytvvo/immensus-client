@@ -11,6 +11,7 @@ const {cart} = storeToRefs(cartStore);
 <template>
   <NuxtLayout name="cart">
     <div class="flex flex-col gap-5 p-5">
+      <button @click="() => orderStore.makeOrder(cart.map(({id})=> id),'test')">Заказать все</button>
       <div v-for="cartItem in cart" :key="cartItem.id" class="flex gap-5">
         <NuxtLink :to="`/item/${cartItem.product.id}`">
           <img :src="cartItem.product.picture" :alt="cartItem.product.name" class="h-20 w-20">
