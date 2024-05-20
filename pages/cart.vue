@@ -6,12 +6,33 @@ const cartStore = useCartStore();
 const orderStore = useOrderStore();
 const {cart} = storeToRefs(cartStore);
 
+const address = ref<string | null>(process.client ? localStorage?.getItem("address") : "");
+
+const onOrder = (
+    cartItemIds: string[]
+) => {
+  if(!address.value || address.value?.length < 3)
+  {
+    alert("Введите корректный адрес!");
+    return;
+  }
+
+  window?.localStorage.setItem("address", address.value);
+  orderStore.makeOrder(cartItemIds, address.value);
+}
+
 </script>
 
 <template>
   <NuxtLayout name="cart">
-    <div class="flex flex-col gap-5 p-5">
-      <button @click="() => orderStore.makeOrder(cart.map(({id})=> id),'test')">Заказать все</button>
+    <div v-if="cartStore.total === 0" class="flex items-center justify-center h-100 w-100">
+      Корзина пуста
+    </div>
+    <div v-else class="flex flex-col gap-5 p-5">
+      <div>
+        <input v-model="address" type="text" placeholder="Адрес">
+        <button @click="() => onOrder(cart.map(({id})=> id))">Заказать все</button>
+      </div>
       <div v-for="cartItem in cart" :key="cartItem.id" class="flex gap-5">
         <NuxtLink :to="`/item/${cartItem.product.id}`">
           <img :src="cartItem.product.picture" :alt="cartItem.product.name" class="h-20 w-20">
@@ -24,7 +45,7 @@ const {cart} = storeToRefs(cartStore);
         <div class="flex-1">{{ cartItem.product.description }}</div>
         <div class="flex flex-col">
           <button
-              @click="() => orderStore.makeOrder([cartItem.id],'test')">
+              @click="() => onOrder([cartItem.id])">
             Заказать
           </button>
           <div class="flex gap-5 justify-between">
