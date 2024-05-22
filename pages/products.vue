@@ -15,7 +15,7 @@ onUnmounted(() => {
 
 const STATUS_MAP = {
   ACTIVE: "В наличии",
-  DELETED: 'Не доступен',
+  DELETED: 'Недоступен',
 }
 
 const COLORS_STATUS_MAP = {

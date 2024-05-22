@@ -57,21 +57,30 @@ const onSubmit = async () => {
 
 <template>
   <NuxtLayout name="item-editor">
-    <form class="flex flex-col items-stretch gap-1 w-80" @submit.prevent="onSubmit">
-      <img v-if="picture" :src="picture" alt="preview">
-      <input type="file" class="w-full border border-gray-300" required name="picture" placeholder="picture"
-             accept="image/png, image/jpeg" @change="onFileLoaded">
-      <input v-model="name" class="w-full border border-gray-300" type="text" required name="name" placeholder="name">
-      <input v-model="price" class="w-full border border-gray-300" type="text" required name="price"
-             placeholder="price">
-      <input v-model="description" class="w-full border border-gray-300" type="text" required name="description"
-             placeholder="description">
+    <div class="flex justify-center p-20">
+      <form class="flex flex-col items-center gap-2 shadow-2xl rounded-lg px-20 py-10" @submit.prevent="onSubmit" style="width: 640px">
+        <label for="file" style="width: 400px; height: 400px" class="flex items-center justify-center border-gray-500 border-2 cursor-pointer">
+          <img v-if="picture" :src="picture" alt="preview" style="width: 400px; height: 400px">
+          <div v-else>Добавить изображение</div>
+        </label>
+        <input type="file" id="file" class="w-full border shadow-md hover:shadow-xl border-gray-300 hidden" required name="picture" placeholder="picture"
+               accept="image/png, image/jpeg" @change="onFileLoaded">
+        <input v-model="name" class="w-full shadow-md hover:shadow-xl rounded-lg p-4" type="text" required name="name" placeholder="Название">
+        <input v-model="price" class="w-full shadow-md hover:shadow-xl rounded-lg	p-4" type="text" required name="price"
+               placeholder="Цена">
+        <input v-model="description" class="w-full shadow-md hover:shadow-xl rounded-lg	p-4" type="text" required name="description"
+               placeholder="Описание">
 
-      <input type="submit" class="w-full border border-gray-300" value="Create">
-    </form>
+        <input type="submit" class="shadow-md rounded-lg p-4 hover:shadow-xl bg-gray-200 mt-4	hover:bg-green-500 hover:text-white" value="Create">
+      </form>
+    </div>
   </NuxtLayout>
 </template>
 
 <style scoped>
+  .icon-default > svg {
+    height: 400px !important;
+    width: 400px !important;
 
+  }
 </style>

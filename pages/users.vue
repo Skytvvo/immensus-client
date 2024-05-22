@@ -34,6 +34,12 @@ const onSave = () => {
   open.value = false;
 }
 
+const ROLES_MAP = {
+  SELLER: "Продавец",
+  ADMIN: "Администратор",
+  USER: "Пользователь",
+}
+
 </script>
 
 <template>
@@ -44,9 +50,9 @@ const onSave = () => {
     <div v-else class="flex flex-col gap-5 p-20 items-center">
       <div v-for="user in users" :key="user.id" class="flex gap-2 shadow-xl hover:shadow-2xl p-5 rounded-xl">
         <div class="flex-col w-96">
-          <div>Имя пользователя: {{ user.username }}</div>
-          <div>Электронная почта: {{ user.email }}</div>
-          <div>Роль: {{ user.role }}</div>
+          <div><span class="font-semibold">Имя пользователя:</span> {{ user.username }}</div>
+          <div><span class="font-semibold">Электронная почта:</span> {{ user.email }}</div>
+          <div><span class="font-semibold">Роль:</span> {{ ROLES_MAP[user.role] }}</div>
         </div>
         <div class="flex flex-col items-center justify-center">
           <button @click="() => onEdit(user)">Редактировать</button>
