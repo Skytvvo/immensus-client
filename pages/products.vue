@@ -41,7 +41,7 @@ const COLORS_STATUS_MAP = {
         </div>
         <div class="flex gap-5">
           <NuxtLink :to="`/item/${product.id}`">
-            <img :src="product.picture" :alt="product.name" class="w-40 h-40">
+            <img :src="product.picture" :alt="product.name" class="w-40 h-40 shadow-md hover:shadow-xl rounded-md">
           </NuxtLink>
           <div class="flex flex-col gap-2">
             <div><span class="font-semibold">Цена:</span> {{ product.price }} руб</div>

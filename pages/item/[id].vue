@@ -32,9 +32,9 @@ const COLORS_STATUS_MAP = {
             <span><span class="font-semibold text-md">Цена: </span>{{ data?.price }} руб</span>
             <span><span class="font-semibold text-md">Описание: </span>{{ data?.description }}</span>
           </div>
-          <button class="border-2 border-gray-500 border-solid rounded-md p-2 hover:bg-emerald-600 hover:text-white" @click="() => cartStore.addByProductId(id as string)">Add to the cart</button>
+          <button class="border-2 border-gray-500 border-solid rounded-md p-2 hover:bg-emerald-600 hover:text-white" @click="() => cartStore.addByProductId(id as string)">Добавить в корзину</button>
         </div>
-        <button class="absolute right-2 top-2 shadow-md hover:shadow-lg p-2 rounded-md hover:bg-gray-400 hover:text-white" @click="() => navigateTo(`/item/edit/${id}`)">Edit</button>
+        <button class="absolute right-2 top-2 shadow-md hover:shadow-lg p-2 rounded-md hover:bg-gray-400 hover:text-white" @click="() => navigateTo(`/item/edit/${id}`)">Редактировать</button>
       </div>
     </div>
   </NuxtLayout>

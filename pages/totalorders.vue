@@ -57,7 +57,7 @@ const COLORS_STATUS_MAP = {
           <div><span class=" font-semibold">Адрес заказа:</span> {{order.address}}</div>
           <div v-for="product in order.products" class="flex mt-4 flex-row gap-2">
             <NuxtLink :to="`/item/${product.id}`">
-              <img class="w-20 h-20" :src="product.picture" :alt="product.name" >
+              <img class="w-40 h-40 shadow-md hover:shadow-xl rounded-md" :src="product.picture" :alt="product.name" >
             </NuxtLink>
             <div class="flex flex-col gap-1 flex-1 justify-start">
               <div><span class=" font-semibold">Название:</span> {{ product.name }}</div>
@@ -115,7 +115,7 @@ const COLORS_STATUS_MAP = {
 
 
                   <div v-for="product in editingOrder.products" class="flex mt-4 flex-row gap-2">
-                      <img class="w-20 h-20" :src="product.picture" :alt="product.name" >
+                      <img class="w-40 h-40 shadow-md hover:shadow-xl rounded-md" :src="product.picture" :alt="product.name" >
                     <div class="flex flex-col gap-1">
                       <div>Название: {{ product.name }}</div>
                       <div>Цена: {{ product.price }}</div>

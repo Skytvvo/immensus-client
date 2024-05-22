@@ -35,7 +35,7 @@ const onOrder = (
             placeholder="Адрес"></span>
       </div>
       <div class="flex justify-end gap-8 mb-4 items-center" style="width: 600px">
-        <span><span class="font-semibold">Итого:</span>{{cart.reduce((acc, curr)=> acc + curr.quantity * curr.product.price,0)}}</span>
+        <span><span class="font-semibold">Итого: </span>{{cart.reduce((acc, curr)=> acc + curr.quantity * curr.product.price,0)}}</span>
         <button class="shadow-md hover:shadow-xl p-2 rounded-lg hover:bg-green-500 bg-gray-100 hover:text-white"
                 @click="() => onOrder(cart.map(({id})=> id))">Заказать все
         </button>
@@ -46,7 +46,7 @@ const onOrder = (
         <div flex gap-4>
           <div class="flex gap-4">
             <NuxtLink :to="`/item/${cartItem.product.id}`">
-              <img :src="cartItem.product.picture" :alt="cartItem.product.name" class="w-40 h-40">
+              <img :src="cartItem.product.picture" :alt="cartItem.product.name" class="w-40 h-40 shadow-md hover:shadow-xl rounded-md">
             </NuxtLink>
             <div class="flex flex-col flex-1">
               <span><span class="font-semibold">Название:</span> {{ cartItem.product.name }}</span>

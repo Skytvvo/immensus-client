@@ -59,9 +59,9 @@ const onSubmit = async () => {
   <NuxtLayout name="item-editor">
     <div class="flex justify-center p-20">
       <form class="flex flex-col items-center gap-2 shadow-2xl rounded-lg px-20 py-10" @submit.prevent="onSubmit" style="width: 640px">
-        <label for="file" style="width: 400px; height: 400px" class="flex items-center justify-center border-gray-500 border-2 cursor-pointer">
-          <img v-if="picture" :src="picture" alt="preview" style="width: 400px; height: 400px">
-          <div v-else>Добавить изображение</div>
+        <label for="file" style="width: 400px; height: 400px" class="flex items-center justify-center cursor-pointer">
+          <img v-if="picture" :src="picture" alt="preview" class="shadow-md hover:shadow-xl rounded-md" style="width: 400px; height: 400px">
+          <div v-else class="border-gray-500 border-2 h-100 w-100 flex items-center justify-center ">Добавить изображение</div>
         </label>
         <input type="file" id="file" class="w-full border shadow-md hover:shadow-xl border-gray-300 hidden" required name="picture" placeholder="picture"
                accept="image/png, image/jpeg" @change="onFileLoaded">
@@ -71,7 +71,7 @@ const onSubmit = async () => {
         <input v-model="description" class="w-full shadow-md hover:shadow-xl rounded-lg	p-4" type="text" required name="description"
                placeholder="Описание">
 
-        <input type="submit" class="shadow-md rounded-lg p-4 hover:shadow-xl bg-gray-200 mt-4	hover:bg-green-500 hover:text-white" value="Create">
+        <input type="submit" class="shadow-md rounded-lg p-4 hover:shadow-xl bg-gray-200 mt-4	hover:bg-green-500 hover:text-white" value="Создать">
       </form>
     </div>
   </NuxtLayout>
