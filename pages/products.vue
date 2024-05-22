@@ -44,13 +44,13 @@ const COLORS_STATUS_MAP = {
             <img :src="product.picture" :alt="product.name" class="w-40 h-40">
           </NuxtLink>
           <div class="flex flex-col">
-            <div>Цена: {{ product.price }} руб</div>
-            <div>К-во заказов: {{ product.orders.length }}</div>
-            <div>Продавец: {{ product.creator?.username }}</div>
+            <div><span class="font-semibold">Цена:</span> {{ product.price }} руб</div>
+            <div><span class="font-semibold">К-во заказов:</span> {{ product.orders.length }}</div>
+            <div><span class="font-semibold">Продавец:</span> {{ product.creator?.username }}</div>
             <div>
-              Статус: <span :style="COLORS_STATUS_MAP[product.state]">{{ STATUS_MAP[product.state] }}</span>
+              <span class="font-semibold">Статус:</span> <span :style="COLORS_STATUS_MAP[product.state]">{{ STATUS_MAP[product.state] }}</span>
             </div>
-            <div class="flex-1">Описание: {{ product.description }}</div>
+            <div class="flex-1"><span class="font-semibold">Описание:</span> {{ product.description }}</div>
           </div>
 
         </div>
