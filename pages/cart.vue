@@ -11,8 +11,7 @@ const address = ref<string | null>(process.client ? localStorage?.getItem("addre
 const onOrder = (
     cartItemIds: string[]
 ) => {
-  if(!address.value || address.value?.length < 3)
-  {
+  if (!address.value || address.value?.length < 3) {
     alert("Введите корректный адрес!");
     return;
   }
@@ -28,37 +27,51 @@ const onOrder = (
     <div v-if="cartStore.total === 0" class="flex items-center justify-center h-100 w-100">
       Корзина пуста
     </div>
-    <div v-else class="flex flex-col gap-5 p-5">
-      <div>
-        <input v-model="address" type="text" placeholder="Адрес">
-        <button @click="() => onOrder(cart.map(({id})=> id))">Заказать все</button>
+    <div v-else class="flex flex-col gap-8 p-20 items-center">
+      <div class="font-semibold text-2xl">Корзина</div>
+      <div class="flex justify-between gap-8 mb-4" style="width: 600px">
+        <span class="flex-1 flex gap-4 items-center"><span class="font-semibold ">Адрес доставки:</span><input
+            class="shadow-md flex-1 hover:shadow-xl p-2 rounded-lg bg-gray-100" v-model="address" type="text"
+            placeholder="Адрес"></span>
+        <button class="shadow-md hover:shadow-xl p-2 rounded-lg hover:bg-green-500 bg-gray-100 hover:text-white"
+                @click="() => onOrder(cart.map(({id})=> id))">Заказать все
+        </button>
       </div>
-      <div v-for="cartItem in cart" :key="cartItem.id" class="flex gap-5">
-        <NuxtLink :to="`/item/${cartItem.product.id}`">
-          <img :src="cartItem.product.picture" :alt="cartItem.product.name" class="h-20 w-20">
-        </NuxtLink>
-        <div class="flex flex-col">
-          <span>Название: {{ cartItem.product.name }}</span>
-          <span>Цена: {{ cartItem.product.price }}</span>
-          <span>Количество: {{ cartItem.quantity }}</span>
+      <div v-for="cartItem in cart" :key="cartItem.id" class="flex flex-col gap-8 shadow-xl hover:shadow-2xl rounded-xl p-4"
+           style="width: 600px">
+        <div flex gap-4>
+          <div class="flex gap-4">
+            <NuxtLink :to="`/item/${cartItem.product.id}`">
+              <img :src="cartItem.product.picture" :alt="cartItem.product.name" class="w-40 h-40">
+            </NuxtLink>
+            <div class="flex flex-col flex-1">
+              <span><span class="font-semibold">Название:</span> {{ cartItem.product.name }}</span>
+              <span><span class="font-semibold">Цена:</span> {{ cartItem.product.price }}</span>
+              <span><span class="font-semibold">Количество:</span> {{ cartItem.quantity }}</span>
+              <div><span class="font-semibold">Описание: </span>{{ cartItem.product.description }}</div>
+              <span>
+                <span class="font-semibold">Количество:</span> <span class="flex gap-4">
+                <button class="flex h-8 w-8 items-center justify-center bg-red-100 hover:bg-red-500 hover:text-white shadow-md hover:shadow-xl rounded-md " @click="() => cartStore.addByCartId(cartItem.id)">+
+                </button>
+                <span class="flex items-center">{{ cartItem.quantity }}</span>
+                <button class="flex h-8 w-8 items-center justify-center hover:bg-green-500 bg-green-100 hover:text-white shadow-md hover:shadow-xl rounded-md" :disabled="!(cartItem.quantity > 1)"
+                        @click="() => cartStore.removeByCartId(cartItem.id)">-
+                </button>
+              </span>
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="flex-1">{{ cartItem.product.description }}</div>
-        <div class="flex flex-col">
-          <button
-              @click="() => onOrder([cartItem.id])">
-            Заказать
-          </button>
-          <div class="flex gap-5 justify-between">
-            <button class="p-2 border border-1 border-gray-500" @click="() => cartStore.addByCartId(cartItem.id)">+
+
+        <div class="flex flex-col flex-1 justify-between items-end">
+          <div class="flex gap-4">
+            <button class="p-2 bg-red-100 hover:bg-red-500 hover:text-white shadow-md hover:shadow-xl rounded-md"
+                    @click="()=>cartStore.empty(cartItem.id)">Удалить из корзины
             </button>
-            <span class="flex items-center">{{ cartItem.quantity }}</span>
-            <button class="p-2 border border-1 border-gray-500" :disabled="!(cartItem.quantity > 1)"
-                    @click="() => cartStore.removeByCartId(cartItem.id)">-
+            <button class="p-2 hover:bg-green-500 bg-green-100 hover:text-white shadow-md hover:shadow-xl rounded-md" @click="() => onOrder([cartItem.id])">
+              Заказать
             </button>
           </div>
-          <button class="p-2 border-2 border-rose-500 hover:bg-red-500 hover:text-white"
-                  @click="()=>cartStore.empty(cartItem.id)">Очистить корзину
-          </button>
         </div>
       </div>
     </div>
