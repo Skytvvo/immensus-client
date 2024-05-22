@@ -12,10 +12,10 @@ const {productItem: {id, picture, name, price}} = props;
 
 <template>
  <NuxtLink :to="`/item/${id}`">
-   <div class="flex flex-col w-40 p-2 gap-1">
-     <img class="w-32 h-32" :src="picture" :alt="name">
-     <h3 class="font-bold text-xl">{{name}}</h3>
-     <span class="font-bold text-xs">{{price}}</span>
+   <div class="flex flex-col w-64 p-4 gap-2 shadow-md cursor-pointer hover:shadow-2xl items-start rounded-xl">
+     <img :src="picture" :alt="name" style="width: 224px; height: 224px">
+     <h3 class="font-bold text-2xl">{{name}}</h3>
+     <span class="font-bold text-xl">{{price}} Руб</span>
    </div>
  </NuxtLink>
 </template>
