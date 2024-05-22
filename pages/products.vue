@@ -32,7 +32,7 @@ const COLORS_STATUS_MAP = {
     </div>
     <div v-else class="flex flex-col gap-10 p-20 items-center">
       <div class="font-semibold text-2xl mb-4">Панель товаров</div>
-      <div v-for="product in products" :key="product.id" class="flex flex-col gap-5 shadow-xl p-5 rounded-xl" style="width: 600px">
+      <div v-for="product in products" :key="product.id" class="flex flex-col gap-5 shadow-xl hover:shadow-2xl p-5 rounded-xl" style="width: 600px">
         <div class="font-bold font-600 text-lg">Название:
           <NuxtLink :to="`/item/${product.id}`">{{ product.name }}</NuxtLink>
         </div>
@@ -43,12 +43,12 @@ const COLORS_STATUS_MAP = {
           <NuxtLink :to="`/item/${product.id}`">
             <img :src="product.picture" :alt="product.name" class="w-40 h-40">
           </NuxtLink>
-          <div class="flex flex-col">
+          <div class="flex flex-col gap-2">
             <div><span class="font-semibold">Цена:</span> {{ product.price }} руб</div>
             <div><span class="font-semibold">К-во заказов:</span> {{ product.orders.length }}</div>
             <div><span class="font-semibold">Продавец:</span> {{ product.creator?.username }}</div>
             <div>
-              <span class="font-semibold">Статус:</span> <span :style="COLORS_STATUS_MAP[product.state]">{{ STATUS_MAP[product.state] }}</span>
+              <span class="font-semibold">Статус:</span> <span class="p-2 rounded-md" :style="COLORS_STATUS_MAP[product.state]">{{ STATUS_MAP[product.state] }}</span>
             </div>
             <div class="flex-1"><span class="font-semibold">Описание:</span> {{ product.description }}</div>
           </div>

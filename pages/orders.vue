@@ -23,9 +23,9 @@ const STATUS_MAP = {
   <NuxtLayout name="orders">
     <div class="flex flex-col gap-8 items-center p-20">
       <div class="font-semibold text-2xl mb-4">Мои Заказы</div>
-      <div v-for="order in orders" :key="order.id" class="flex flex-col gap-4 px-20 py-10 shadow-2xl rounded-xl	" style="width: 640px">
+      <div v-for="order in orders" :key="order.id" class="flex flex-col gap-4 px-20 py-10 shadow-xl hover:shadow-2xl rounded-xl	" style="width: 640px">
         <div><span class="font-semibold">Адрес:</span> {{ order.address }}</div>
-        <div class="bold text-lg"><span class="font-semibold">Статус:</span> <span :style="`background: ${COLORS_STATUS_MAP[order.status]}`">{{ STATUS_MAP[order.status] }}</span></div>
+        <div class="bold text-lg"><span class="font-semibold">Статус:</span> <span class="p-2 rounded-md" :style="`background: ${COLORS_STATUS_MAP[order.status]}`">{{ STATUS_MAP[order.status] }}</span></div>
         <div v-for="product in order.products" class="flex flex-row gap-2">
           <NuxtLink :to="`/item/${product.id}`">
             <img class="w-20 h-20" :src="product.picture" :alt="product.name" >

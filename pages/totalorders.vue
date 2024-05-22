@@ -50,10 +50,10 @@ const COLORS_STATUS_MAP = {
     <div v-else class="flex flex-col w-100 p-20 gap-8 items-center">
       <div class="font-semibold text-2xl mb-4">Панель заказов</div>
       <div v-for="order in ordersControl" :key="order.id" class="flex justify-between items-start shadow-xl hover:shadow-2xl p-5 rounded-xl" style="width:600px">
-        <div class="flex-col flex">
+        <div class="flex-col flex gap-2">
           <div><span class=" font-semibold">Заказчик:</span> {{order.user.username}}</div>
           <div><span class=" font-semibold">email заказчика:</span> {{order.user.username}}</div>
-          <div><span class=" font-semibold">Статус заказа:</span> <span :style="`background: ${COLORS_STATUS_MAP[order.status]}`">{{STATUS_MAP[order.status]}}</span> </div>
+          <div><span class=" font-semibold">Статус заказа:</span> <span class="p-2 rounded-md" :style="`background: ${COLORS_STATUS_MAP[order.status]}`">{{STATUS_MAP[order.status]}}</span> </div>
           <div><span class=" font-semibold">Адрес заказа:</span> {{order.address}}</div>
           <div v-for="product in order.products" class="flex mt-4 flex-row gap-2">
             <NuxtLink :to="`/item/${product.id}`">
