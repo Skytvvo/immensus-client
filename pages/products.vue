@@ -9,15 +9,29 @@ onMounted(() => {
   productsPanelStore.loadPanel()
 })
 
+onUnmounted(() => {
+  productsPanelStore.cleanData()
+})
+
+const STATUS_MAP = {
+  ACTIVE: "В наличии",
+  DELETED: 'Не доступен',
+}
+
+const COLORS_STATUS_MAP = {
+  ACTIVE: "background:greenyellow",
+  DELETED: 'background:red; color: white',
+}
+
 </script>
 
 <template>
-  <NuxtLayout name="orders">
-    <div v-if="products.length === 0" class="flex items-center justify-center">
+  <NuxtLayout name="products">
+    <div v-if="products?.length === 0" class="flex items-center justify-center">
       Загрузка
     </div>
-    <div v-else class="flex flex-col gap-10 p-20">
-      <div v-for="product in products" :key="product.id" class="flex flex-col gap-5 shadow-xl p-5 rounded-xl">
+    <div v-else class="flex flex-col gap-10 p-20 items-center">
+      <div v-for="product in products" :key="product.id" class="flex flex-col gap-5 shadow-xl p-5 rounded-xl" style="width: 600px">
         <div class="font-bold font-600 text-lg">Название:
           <NuxtLink :to="`/item/${product.id}`">{{ product.name }}</NuxtLink>
         </div>
@@ -32,11 +46,12 @@ onMounted(() => {
             <div>Цена: {{ product.price }} руб</div>
             <div>К-во заказов: {{ product.orders.length }}</div>
             <div>Продавец: {{ product.creator?.username }}</div>
+            <div>
+              Статус: <span :style="COLORS_STATUS_MAP[product.state]">{{ STATUS_MAP[product.state] }}</span>
+            </div>
+            <div class="flex-1">Описание: {{ product.description }}</div>
           </div>
-          <div>
-            Статус: {{ product.state }}
-          </div>
-          <div class="flex-1">Описание: {{ product.description }}</div>
+
         </div>
       </div>
     </div>

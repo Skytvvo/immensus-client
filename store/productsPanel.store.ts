@@ -18,13 +18,21 @@ export const useProductsPanelStore = defineStore('productsPanel', {
     getters: {},
     actions: {
         async loadPanel() {
-            const access_token = localStorage.getItem("access_token");
+            try {
+                const access_token = localStorage.getItem("access_token");
 
-            this.products = await $fetch("/api/item/all", {
-                headers: {
-                    Authorization: `Bearer ${access_token}`
-                }
-            })
+                this.products = await $fetch("/api/item/all", {
+                    headers: {
+                        Authorization: `Bearer ${access_token}`
+                    }
+                })
+            }
+            catch (e) {
+
+            }
+        },
+        cleanData() {
+            this.products = [];
         }
     }
 })

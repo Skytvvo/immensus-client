@@ -16,13 +16,13 @@
         <DesktopNavMenuItem to="/item/create">
           Добавить новый товар
         </DesktopNavMenuItem>
-        <DesktopNavMenuItem to="/panels/users">
+        <DesktopNavMenuItem to="/users">
           Пользователи
         </DesktopNavMenuItem>
-        <DesktopNavMenuItem to="/panels/orders">
+        <DesktopNavMenuItem to="/totalorders">
           Заказы
         </DesktopNavMenuItem>
-        <DesktopNavMenuItem to="/panels/products">
+        <DesktopNavMenuItem to="/products">
            Товары
         </DesktopNavMenuItem>
         <DesktopNavMenuItem to="/orders">

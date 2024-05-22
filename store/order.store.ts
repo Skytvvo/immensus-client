@@ -1,9 +1,11 @@
 import {defineStore} from 'pinia'
 import {useCartStore} from "~/store/cart.store";
 import {ProductItem} from "~/types/ProductItem.types";
+import {UserProfileType} from "~/types/UserProfile.types";
 
 export interface OrderStore {
-    orders: Order[]
+    orders: Order[];
+    ordersControl: Order[];
 }
 
 export interface Order {
@@ -12,11 +14,13 @@ export interface Order {
     address: string;
     status: string;
     products: ProductItem[];
+    user: UserProfileType;
 }
 
 export const useOrderStore = defineStore('order', {
     state: (): OrderStore => ({
-        orders: []
+        orders: [],
+        ordersControl: []
     }),
     getters: {
         getTotalActual(state){
@@ -59,6 +63,38 @@ export const useOrderStore = defineStore('order', {
                 this.loadOrders(),
                 cart.loadCart()
             ])
+        },
+        async loadControlledOrders() {
+            try {
+                const access_token = localStorage.getItem("access_token");
+
+                this.ordersControl = await $fetch<Order[]>("/api/order/controlled", {
+                    headers: {
+                        Authorization: `Bearer ${access_token}`
+                    }
+                })
+            }
+            catch (e){
+                alert(e)
+            }
+        },
+        async updateOrder(body: Order){
+            try {
+                const access_token = localStorage.getItem("access_token");
+
+                await $fetch("/api/order/controlled", {
+                    method: "PUT",
+                    body,
+                    headers: {
+                        Authorization: `Bearer ${access_token}`
+                    }
+                })
+
+                await this.loadControlledOrders();
+            }
+            catch (e){
+                alert(e)
+            }
         }
     }
 })
