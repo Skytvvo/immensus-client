@@ -77,31 +77,60 @@ const onDelete = async () => {
   }
 }
 
+
+const STATUS_MAP = {
+  ACTIVE: "В наличии",
+  DELETED: 'Недоступен',
+}
+
+const COLORS_STATUS_MAP = {
+  ACTIVE: "background:greenyellow",
+  DELETED: 'background:red; color: white',
+}
+
 </script>
 
 <template>
   <NuxtLayout name="item-editor">
     <span v-if="pending">Loading...</span>
-    <form v-else class="flex flex-col items-stretch gap-1 w-80" @submit.prevent="onSubmit">
-      <img v-if="picture" :src="picture" alt="preview">
-      <input type="file" class="w-full border border-gray-300" name="picture" placeholder="picture"
-             accept="image/png, image/jpeg" @change="onFileLoaded">
-      <input v-model="name" class="w-full border border-gray-300" type="text" required name="name" placeholder="name">
-      <input v-model="price" class="w-full border border-gray-300" type="text" required name="price"
-             placeholder="price">
-      <input v-model="description" class="w-full border border-gray-300" type="text" required name="description"
-             placeholder="description">
+    <div v-else class="flex justify-center p-20">
 
-      <div class="flex gap-1">
-        <label for="select">Статус:</label>
-        <select v-model="state" id="select">
-          <option value="ACTIVE">Активен</option>
-          <option value="DELETED">Заархивирован</option>
-        </select>
-      </div>
-      <input type="submit" class="w-full border border-gray-300" value="Update">
-    </form>
-    <button v-if="state !== 'DELETED'" @click="onDelete">Удалить товар</button>
+      <form class="flex flex-col items-center gap-2 shadow-2xl rounded-lg px-20 py-10" @submit.prevent="onSubmit">
+        <label for="file" style="width: 400px; height: 400px" class="flex items-center justify-center border-gray-500 border-2 cursor-pointer">
+          <img v-if="picture" :src="picture" alt="preview" style="width: 400px; height: 400px">
+          <div v-else>Добавить изображение</div>
+        </label>
+        <input type="file" id="file" class="w-full border shadow-md hover:shadow-xl border-gray-300 hidden" required name="picture" placeholder="picture"
+               accept="image/png, image/jpeg" @change="onFileLoaded">
+        <span class="w-full flex-col flex items-start">
+          <span class="font-semibold">Название: </span>
+        <input v-model="name" class=" w-full flex-1 shadow-md hover:shadow-xl rounded-lg p-4" type="text" required name="name" placeholder="Название">
+
+        </span>
+
+        <span class="w-full flex-col flex items-start">
+          <span class="font-semibold">Цена: </span>
+           <input v-model="price" class="w-full shadow-md hover:shadow-xl rounded-lg	p-4" type="text" required name="price"
+                  placeholder="Цена">
+        </span>
+
+        <span class="w-full flex flex-col items-start">
+          <span class="font-semibold">Описание: </span>
+          <input v-model="description" class="w-full shadow-md hover:shadow-xl rounded-lg	p-4" type="text" required name="description"
+                 placeholder="Описание">
+        </span>
+
+
+        <div class="w-full flex flex-col items-start">
+          <label for="select" class="font-semibold">Статус:</label>
+          <select v-model="state" id="select" class="w-full shadow-md hover:shadow-xl rounded-lg p-4 flex-1">
+            <option value="ACTIVE" class="bg-green-500 text-white">В наличии</option>
+            <option value="DELETED" class="bg-red-500 text-white">Недоступен</option>
+          </select>
+        </div>
+        <input type="submit" class="p-2 w-full bg-green-100 hover:bg-green-500 hover:text-white rounded-md mt-8" value="Update">
+      </form>
+    </div>
   </NuxtLayout>
 </template>
 
