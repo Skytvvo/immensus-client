@@ -48,6 +48,7 @@ const COLORS_STATUS_MAP = {
       Список пуст
     </div>
     <div v-else class="flex flex-col w-100 p-20 gap-8 items-center">
+      <div class="font-semibold text-2xl mb-4">Панель заказов</div>
       <div v-for="order in ordersControl" :key="order.id" class="flex justify-between items-start shadow-xl hover:shadow-2xl p-5 rounded-xl" style="width:600px">
         <div class="flex-col flex">
           <div><span class=" font-semibold">Заказчик:</span> {{order.user.username}}</div>

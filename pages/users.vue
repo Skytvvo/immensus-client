@@ -48,6 +48,7 @@ const ROLES_MAP = {
       <div>Загрузка</div>
     </div>
     <div v-else class="flex flex-col gap-5 p-20 items-center">
+      <div class="font-semibold text-2xl mb-4">Панель пользователей</div>
       <div v-for="user in users" :key="user.id" class="flex gap-2 shadow-xl hover:shadow-2xl p-5 rounded-xl">
         <div class="flex-col w-96">
           <div><span class="font-semibold">Имя пользователя:</span> {{ user.username }}</div>

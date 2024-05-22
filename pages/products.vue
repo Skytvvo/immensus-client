@@ -31,6 +31,7 @@ const COLORS_STATUS_MAP = {
       Загрузка
     </div>
     <div v-else class="flex flex-col gap-10 p-20 items-center">
+      <div class="font-semibold text-2xl mb-4">Панель товаров</div>
       <div v-for="product in products" :key="product.id" class="flex flex-col gap-5 shadow-xl p-5 rounded-xl" style="width: 600px">
         <div class="font-bold font-600 text-lg">Название:
           <NuxtLink :to="`/item/${product.id}`">{{ product.name }}</NuxtLink>
