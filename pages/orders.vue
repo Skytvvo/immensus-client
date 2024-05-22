@@ -36,7 +36,7 @@ const STATUS_MAP = {
             <div class="flex"><span class="font-semibold">Описание:</span> {{ product.description }}</div>
           </div>
         </div>
-        <div class="mt-4 font-semibold">Всего: {{order.products.reduce((acc, curr) => acc + curr.price, 0)}} Руб</div>
+        <div class="mt-4 font-semibold">Итого: {{order.products.reduce((acc, curr) => acc + curr.price, 0)}} Руб</div>
       </div>
     </div>
   </NuxtLayout>
