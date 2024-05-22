@@ -33,10 +33,14 @@ const onOrder = (
         <span class="flex-1 flex gap-4 items-center"><span class="font-semibold ">Адрес доставки:</span><input
             class="shadow-md flex-1 hover:shadow-xl p-2 rounded-lg bg-gray-100" v-model="address" type="text"
             placeholder="Адрес"></span>
+      </div>
+      <div class="flex justify-end gap-8 mb-4 items-center" style="width: 600px">
+        <span><span class="font-semibold">Итого:</span>{{cart.reduce((acc, curr)=> acc + curr.quantity * curr.product.price,0)}}</span>
         <button class="shadow-md hover:shadow-xl p-2 rounded-lg hover:bg-green-500 bg-gray-100 hover:text-white"
                 @click="() => onOrder(cart.map(({id})=> id))">Заказать все
         </button>
       </div>
+
       <div v-for="cartItem in cart" :key="cartItem.id" class="flex flex-col gap-8 shadow-xl hover:shadow-2xl rounded-xl p-4"
            style="width: 600px">
         <div flex gap-4>
@@ -46,7 +50,7 @@ const onOrder = (
             </NuxtLink>
             <div class="flex flex-col flex-1">
               <span><span class="font-semibold">Название:</span> {{ cartItem.product.name }}</span>
-              <span><span class="font-semibold">Цена:</span> {{ cartItem.product.price }}</span>
+              <span><span class="font-semibold">Цена:</span> {{ cartItem.product.price }} Руб</span>
               <span><span class="font-semibold">Количество:</span> {{ cartItem.quantity }}</span>
               <div><span class="font-semibold">Описание: </span>{{ cartItem.product.description }}</div>
               <span>
@@ -63,7 +67,8 @@ const onOrder = (
           </div>
         </div>
 
-        <div class="flex flex-col flex-1 justify-between items-end">
+        <div class="flex flex-1 justify-between items-center">
+          <span><span class="font-semibold">Итого:</span> {{cartItem.product.price * cartItem.quantity}}</span>
           <div class="flex gap-4">
             <button class="p-2 bg-red-100 hover:bg-red-500 hover:text-white shadow-md hover:shadow-xl rounded-md"
                     @click="()=>cartStore.empty(cartItem.id)">Удалить из корзины
