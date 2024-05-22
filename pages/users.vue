@@ -56,7 +56,7 @@ const ROLES_MAP = {
           <div><span class="font-semibold">Роль:</span> {{ ROLES_MAP[user.role] }}</div>
         </div>
         <div class="flex flex-col items-center justify-center">
-          <button @click="() => onEdit(user)">Редактировать</button>
+          <button class="font-semibold" @click="() => onEdit(user)">Редактировать</button>
         </div>
       </div>
 
