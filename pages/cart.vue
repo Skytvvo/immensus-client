@@ -55,11 +55,12 @@ const onOrder = (
               <div><span class="font-semibold">Описание: </span>{{ cartItem.product.description }}</div>
               <span>
                 <span class="font-semibold">Количество:</span> <span class="flex gap-4">
-                <button class="flex h-8 w-8 items-center justify-center bg-red-100 hover:bg-red-500 hover:text-white shadow-md hover:shadow-xl rounded-md " @click="() => cartStore.addByCartId(cartItem.id)">+
+               <button class="flex h-8 w-8 items-center justify-center hover:bg-red-500 bg-red-100 hover:text-white shadow-md hover:shadow-xl rounded-md" :disabled="!(cartItem.quantity > 1)"
+                       @click="() => cartStore.removeByCartId(cartItem.id)">-
                 </button>
                 <span class="flex items-center">{{ cartItem.quantity }}</span>
-                <button class="flex h-8 w-8 items-center justify-center hover:bg-green-500 bg-green-100 hover:text-white shadow-md hover:shadow-xl rounded-md" :disabled="!(cartItem.quantity > 1)"
-                        @click="() => cartStore.removeByCartId(cartItem.id)">-
+
+                 <button class="flex h-8 w-8 items-center justify-center bg-green-100 hover:bg-green-500 hover:text-white shadow-md hover:shadow-xl rounded-md " @click="() => cartStore.addByCartId(cartItem.id)">+
                 </button>
               </span>
               </span>

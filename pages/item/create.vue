@@ -71,7 +71,7 @@ const onSubmit = async () => {
         <input v-model="description" class="w-full shadow-md hover:shadow-xl rounded-lg	p-4" type="text" required name="description"
                placeholder="Описание">
 
-        <input type="submit" class="shadow-md rounded-lg p-4 hover:shadow-xl bg-gray-200 mt-4	hover:bg-green-500 hover:text-white" value="Создать">
+        <button class="shadow-md rounded-lg w-full p-2 hover:shadow-xl bg-gray-200 mt-4	hover:bg-green-500 hover:text-white">Создать</button>
       </form>
     </div>
   </NuxtLayout>

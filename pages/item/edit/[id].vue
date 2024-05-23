@@ -136,7 +136,7 @@ const COLORS_STATUS_MAP = {
             <option value="DELETED" class="bg-red-500 text-white">Недоступен</option>
           </select>
         </div>
-        <input type="submit" class="p-2 w-full bg-green-100 hover:bg-green-500 hover:text-white rounded-md mt-8" value="Сохранить">
+        <button @click="onSubmit" class="p-2 w-full bg-green-100 hover:bg-green-500 hover:text-white rounded-md mt-8">Сохранить</button>
       </form>
     </div>
   </NuxtLayout>
