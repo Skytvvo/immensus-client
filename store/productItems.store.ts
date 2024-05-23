@@ -10,7 +10,7 @@ export interface ProductItemsStore {
 const PRODUCT_ITEMS_STORE_DEFAULT: ProductItemsStore = {
     filter: {},
     paginationOptions: {},
-    products: []
+    products: [],
 }
 
 export const useProductItemsStore = defineStore('productItem', {

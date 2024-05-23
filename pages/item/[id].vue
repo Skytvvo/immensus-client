@@ -2,12 +2,15 @@
 
 import {ProductItem} from "~/types/ProductItem.types";
 import {useCartStore} from "~/store/cart.store";
+import {useProfileStore} from "~/store/profile.store";
+import {UserRoles} from "~/types/UserProfile.types";
 
 const { id } = useRoute().params
-const { pending, data } = useLazyFetch<ProductItem>('/api/item', { query: { id }})
+const { pending, data } = useFetch<ProductItem>('/api/item', { query: { id }})
 
 const cartStore = useCartStore();
-
+const profileStore = useProfileStore();
+const {user} = storeToRefs(profileStore);
 const STATUS_MAP = {
   ACTIVE: "В наличии",
   DELETED: 'Недоступен',
@@ -34,7 +37,7 @@ const COLORS_STATUS_MAP = {
           </div>
           <button class="border-2 border-gray-500 border-solid rounded-md p-2 hover:bg-emerald-600 hover:text-white" @click="() => cartStore.addByProductId(id as string)">Добавить в корзину</button>
         </div>
-        <button class="absolute right-2 top-2 shadow-md hover:shadow-lg p-2 rounded-md hover:bg-gray-400 hover:text-white" @click="() => navigateTo(`/item/edit/${id}`)">Редактировать</button>
+        <button v-show="user?.role === UserRoles.ADMIN" class="absolute right-2 top-2 shadow-md hover:shadow-lg p-2 rounded-md hover:bg-gray-400 hover:text-white" @click="() => navigateTo(`/item/edit/${id}`)">Редактировать</button>
       </div>
     </div>
   </NuxtLayout>

@@ -15,6 +15,7 @@ export interface Order {
     status: string;
     products: ProductItem[];
     user: UserProfileType;
+    cost: number;
 }
 
 export const useOrderStore = defineStore('order', {

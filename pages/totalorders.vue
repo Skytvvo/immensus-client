@@ -65,7 +65,7 @@ const COLORS_STATUS_MAP = {
               <div class="flex"><span class=" font-semibold">Описание:</span> {{ product.description }}</div>
             </div>
           </div>
-          <div class="mt-4 font-semibold">Всего: {{order.products.reduce((acc, curr) => acc + curr.price, 0)}} Руб</div>
+          <div class="mt-4 font-semibold">Итого: {{order.cost}} Руб</div>
         </div>
         <button class="font-semibold" @click="() => onEdit(order)">Редактировать</button>
       </div>
@@ -111,7 +111,7 @@ const COLORS_STATUS_MAP = {
                     </div>
                   </div>
 
-                  <div class="w-1/3 font-semibold">Всего: {{editingOrder.products.reduce((acc, curr) => acc + curr.price, 0)}} Руб</div>
+                  <div class="w-1/3 font-semibold">Итого: {{editingOrder.cost}} Руб</div>
 
 
                   <div v-for="product in editingOrder.products" class="flex mt-4 flex-row gap-2">

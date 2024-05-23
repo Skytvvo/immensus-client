@@ -25,7 +25,7 @@ const STATUS_MAP = {
       <div class="font-semibold text-2xl mb-4">Мои Заказы</div>
       <div v-for="order in orders" :key="order.id" class="flex flex-col gap-4 px-20 py-10 shadow-xl hover:shadow-2xl rounded-xl	" style="width: 640px">
         <div><span class="font-semibold">Адрес:</span> {{ order.address }}</div>
-        <div class="font-semibold">Итого: {{order.products.reduce((acc, curr) => acc + curr.price, 0)}} Руб</div>
+        <div class="font-semibold">Итого: {{order?.cost || 0}} Руб</div>
         <div class="bold text-lg"><span class="font-semibold">Статус:</span> <span class="p-2 rounded-md" :style="`background: ${COLORS_STATUS_MAP[order.status]}`">{{ STATUS_MAP[order.status] }}</span></div>
 
         <div v-for="product in order.products" class="flex flex-row gap-2">

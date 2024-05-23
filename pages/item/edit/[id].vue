@@ -4,13 +4,21 @@
 import {ProductItem} from "~/types/ProductItem.types";
 
 const {id} = useRoute().params
-const {pending, data} = useLazyFetch<ProductItem>('/api/item', {query: {id}})
+const {pending, data} = useFetch<ProductItem>('/api/item', {query: {id}})
 
 const name = ref<string | null>(data.value?.name ?? null)
 const description = ref<string | null>(data.value?.description ?? null)
 const price = ref<number | null>(data.value?.price ?? null)
 const picture = ref<string | null>(data.value?.picture ?? null)
 const state = ref<string | null>(data.value?.state ?? null)
+
+watch(data, ()=>{
+  name.value = data.value?.name ?? null;
+  description.value = data.value?.description ?? null;
+  price.value = data.value?.price ?? null;
+  picture.value = data.value?.picture ?? null;
+  state.value = data.value?.state ?? null;
+})
 
 const onFileLoaded = async (e: Event) => {
   const loadedFile: File = (<HTMLInputElement>e.target).files?.[0] as File;
